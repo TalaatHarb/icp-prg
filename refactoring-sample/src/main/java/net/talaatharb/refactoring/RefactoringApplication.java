@@ -1,8 +1,7 @@
 package net.talaatharb.refactoring;
 
-import java.util.Arrays;
-
 import lombok.extern.slf4j.Slf4j;
+import net.talaatharb.refactoring.utils.StatisticsUtils;
 
 @Slf4j
 public class RefactoringApplication {
@@ -12,17 +11,17 @@ public class RefactoringApplication {
 
 		final double[] x = { 10, 20, 30, 40, 50 };
 
-		final double ex = Arrays.stream(x).average().orElse(0.0);
-		double sx = Math.sqrt(Arrays.stream(x).map(xi -> Math.pow(xi - ex, 2)).average().orElse(0.0));
+		final double meanX = StatisticsUtils.calculateMean(x);
+		double standardDeviationX = StatisticsUtils.calculateStandardDeviation(x, meanX);
 		
-		log.info("E(x) = {}, S(x) = {}", ex, sx);
+		log.info("E(x) = {}, S(x) = {}", meanX, standardDeviationX);
 		
 		final double[] y = { 10, 20, 30, 40, 50, 60, 70 };
 
-		final double ey = Arrays.stream(y).average().orElse(0.0);
-		double sy = Math.sqrt(Arrays.stream(y).map(yi -> Math.pow(yi - ey, 2)).average().orElse(0.0));
+		final double meanY = StatisticsUtils.calculateMean(y);
+		double standardDeviationY = StatisticsUtils.calculateStandardDeviation(y, meanY);
 		
-		log.info("E(y) = {}, S(y) = {}", ey, sy);
+		log.info("E(y) = {}, S(y) = {}", meanY, standardDeviationY);
 		
 		log.trace("Application finished");
 	}
