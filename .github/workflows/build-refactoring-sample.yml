@@ -17,4 +17,4 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - run: cd refactoring-sample && clean compile org.pitest:pitest-maven:mutationCoverage verify package -DnvdApiKey=${{ secrets.NVD_API_KEY }}
+      - run: cd refactoring-sample && mvn clean compile org.pitest:pitest-maven:mutationCoverage verify package -DnvdApiKey=${{ secrets.NVD_API_KEY }}
