@@ -1,5 +1,6 @@
 package net.talaatharb.christmaslights;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -104,5 +105,38 @@ class ChristmasLightsTests {
 				assertFalse(christmasLights.getStatus(x, y));
 			}
 		}
+	}
+	
+	@Test
+	void testBrightnessIncreasesByTurnOn() {
+		// action = turn on only first light
+		christmasLights.turnOn(0, 0, 0, 0);
+
+		assertEquals(1, christmasLights.getTotalBrightness());
+	}
+
+	@Test
+	void testBrightnessDoesNotDecreaseBelowZero() {
+		// action = turn off only first light
+		christmasLights.turnOff(0, 0, 0, 0);
+
+		assertEquals(0, christmasLights.getTotalBrightness());
+	}
+
+	@Test
+	void testBrightnessDecreaseByTurnOff() {
+		// action = turn off only first light after turning it on
+		christmasLights.turnOn(0, 0, 0, 0);
+		christmasLights.turnOff(0, 0, 0, 0);
+
+		assertEquals(0, christmasLights.getTotalBrightness());
+	}
+
+	@Test
+	void testBrightnessIncreasesByToggle() {
+		// action = toggle all lights
+		christmasLights.toggle(0, 0, 999, 999);
+
+		assertEquals(2 * SIZE * SIZE, christmasLights.getTotalBrightness());
 	}
 }

@@ -4,16 +4,16 @@ public class ChristmasLights {
 
 	public static final int SIZE = 1000;
 
-	private boolean[][] lights;
+	private final int[][] brightness;
 
 	public ChristmasLights() {
 		// Construct Christmas lights
-		lights = new boolean[SIZE][SIZE];
+		brightness = new int[SIZE][SIZE];
 	}
 
 	public boolean getStatus(int x, int y) {
 		// return status at coordinates (x, y)
-		return lights[x][y];
+		return brightness[x][y] > 0;
 	}
 
 	public void turnOnAll() {
@@ -30,7 +30,7 @@ public class ChristmasLights {
 		// turn on range
 		for (int y = startY; y < endY + 1; y++) {
 			for (int x = startX; x < endX + 1; x++) {
-				lights[x][y] = true;
+				brightness[x][y]++;
 			}
 		}
 	}
@@ -39,7 +39,7 @@ public class ChristmasLights {
 		// turn off range
 		for (int y = startY; y < endY + 1; y++) {
 			for (int x = startX; x < endX + 1; x++) {
-				lights[x][y] = false;
+				brightness[x][y] = brightness[x][y] == 0 ? 0 : brightness[x][y] - 1;
 			}
 		}
 	}
@@ -48,7 +48,7 @@ public class ChristmasLights {
 		// toggle range
 		for (int y = startY; y < endY + 1; y++) {
 			for (int x = startX; x < endX + 1; x++) {
-				lights[x][y] = !lights[x][y];
+				brightness[x][y] += 2;
 			}
 		}
 	}
@@ -58,11 +58,22 @@ public class ChristmasLights {
 		int counter = 0;
 		for (int y = 0; y < ChristmasLights.SIZE; y++) {
 			for (int x = 0; x < ChristmasLights.SIZE; x++) {
-				if (lights[x][y]) {
+				if (brightness[x][y] > 0) {
 					counter++;
 				}
 			}
 		}
 		return counter;
+	}
+	
+	public int getTotalBrightness() {
+		// sum all brightness values
+		int sum = 0;
+		for (int y = 0; y < ChristmasLights.SIZE; y++) {
+			for (int x = 0; x < ChristmasLights.SIZE; x++) {
+				sum += brightness[x][y];
+			}
+		}
+		return sum;
 	}
 }
