@@ -55,6 +55,14 @@ public class ChristmasLights {
 
 	public int getTotalOn() {
 		// get total number on
-		return 0;
+		int counter = 0;
+		for (int y = 0; y < ChristmasLights.SIZE; y++) {
+			for (int x = 0; x < ChristmasLights.SIZE; x++) {
+				if (lights[x][y]) {
+					counter++;
+				}
+			}
+		}
+		return counter;
 	}
 }
