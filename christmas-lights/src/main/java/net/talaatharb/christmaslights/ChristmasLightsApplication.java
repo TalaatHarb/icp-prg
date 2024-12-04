@@ -1,7 +1,5 @@
 package net.talaatharb.christmaslights;
 
-import java.util.Arrays;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
