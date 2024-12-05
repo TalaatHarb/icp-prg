@@ -1,0 +1,21 @@
+name: build-ohce
+on:
+  push:
+    branches:
+    - '**'
+    paths:
+      - ohce/**
+      - .github/workflows/build-ohce.yml
+
+jobs:
+  build-project:
+    name: build-ohce
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+      - run: cd ohce && mvn clean compile org.pitest:pitest-maven:mutationCoverage verify package -DnvdApiKey=${{ secrets.NVD_API_KEY }}
