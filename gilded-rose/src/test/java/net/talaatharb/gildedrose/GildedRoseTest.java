@@ -1,5 +1,6 @@
 package net.talaatharb.gildedrose;
 
+import org.approvaltests.Approvals;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.jupiter.api.Test;
 import org.lambda.utils.Range;
@@ -19,7 +20,12 @@ class GildedRoseTest {
 		Item[] items = new Item[] { new Item(name, sellIn, quality) };
 		GildedRose app = new GildedRose(items);
 		app.updateQuality();
-		return app.items[quality].toString();
+		return items[0].toString();
+	}
+
+	@Test
+	void testConjured() {
+		Approvals.verify(doUpdateQuality("Conjured Mana Cake", 1, 10));
 	}
 
 }
