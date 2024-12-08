@@ -1,0 +1,21 @@
+name: build-roman-numerals
+on:
+  push:
+    branches:
+    - '**'
+    paths:
+      - roman-numerals/**
+      - .github/workflows/build-roman-numerals.yml
+
+jobs:
+  build-project:
+    name: build-roman-numerals
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+      - run: cd roman-numerals && mvn clean compile org.pitest:pitest-maven:mutationCoverage verify package -DnvdApiKey=${{ secrets.NVD_API_KEY }}
