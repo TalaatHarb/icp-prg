@@ -21,13 +21,13 @@ public class CommonSteps {
 		log.info("I am on Ebay {} page", pageName);
 	}
 
-	@Then("I naviagate to the {string} page")
-	public void iNaviagateToPage(String pageName) {
+	@Then("I navigate to the {string} page")
+	public void iNavigateToPage(String pageName) {
 		String currentURL = commonActions.getCurrnetPageURL();
 		log.info("Current page url: {}", currentURL);
 
 		assertTrue(currentURL.contains(PageUtils.mapPageNameToURL(pageName)));
-		log.info("I naviagate to the {} page", pageName);
+		log.info("I navigate to the {} page", pageName);
 	}
 
 	@Then("I confirm page title contains {string}")
@@ -36,7 +36,7 @@ public class CommonSteps {
 		log.info("Current page title: {}", currentTitle);
 
 		assertTrue(currentTitle.contains(title));
-		log.info("I naviagate to the page with title: {}", title);
+		log.info("I navigate to the page with title: {}", title);
 	}
 
 }

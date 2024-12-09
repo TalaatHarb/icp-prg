@@ -5,7 +5,7 @@ Feature: Ebay Home page scenarios
   Scenario: Advanced search link
     Given I am on Ebay 'Home' page
     When I click on 'Advanced' Link
-    Then I naviagate to the 'Advanced search' page
+    Then I navigate to the 'Advanced search' page
 
   @Home @Search
   Scenario: Search items count
@@ -23,7 +23,7 @@ Feature: Ebay Home page scenarios
   Scenario Outline: Tab links
     Given I am on Ebay 'Home' page
     When I click on '<tabName>' Link
-    Then I naviagate to the '<pageName>' page
+    Then I navigate to the '<pageName>' page
     And I confirm page title contains '<title>'
 
     Examples: 

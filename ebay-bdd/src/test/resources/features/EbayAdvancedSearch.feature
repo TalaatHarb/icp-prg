@@ -5,7 +5,7 @@ Feature: Advanced search page features
   Scenario: Ebay logo
     Given I am on Ebay 'Advanced search' page
     When I click on Ebay logo
-    Then I naviagate to the 'Home' page
+    Then I navigate to the 'Home' page
 
   @AdvancedSearch @Search
   Scenario: Advanced search
