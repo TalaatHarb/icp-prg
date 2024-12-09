@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="14.557" tests="7" skipped="0" failures="0" errors="0">
+<testcase classname="Ebay Home page scenarios" name="Search an item in category" time="12.421">
+<system-out><![CDATA[
+Given I am on Ebay 'Home' page..............................................passed
+When I search for 'Dell' in category 'Computers/Tablets & Networking'.......passed
+Then I confirm at least 10000 results.......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Ebay Home page scenarios" name="Tab links - #1.2" time="14.314">
+<system-out><![CDATA[
+Given I am on Ebay 'Home' page..............................................passed
+When I click on 'Electronics' Link..........................................passed
+Then I naviagate to the 'Electronics' page..................................passed
+And I confirm page title contains 'Electronics'.............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced search page features" name="Ebay logo" time="11.922">
+<system-out><![CDATA[
+Given I am on Ebay 'Advanced search' page...................................passed
+When I click on Ebay logo...................................................passed
+Then I naviagate to the 'Home' page.........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Ebay Home page scenarios" name="Tab links - #1.1" time="13.756">
+<system-out><![CDATA[
+Given I am on Ebay 'Home' page..............................................passed
+When I click on 'Motors' Link...............................................passed
+Then I naviagate to the 'Auto Parts' page...................................passed
+And I confirm page title contains 'Auto Parts'..............................passed
+]]></system-out>
+</testcase>
+<testcase classname="Ebay Home page scenarios" name="Search items count" time="12.839">
+<system-out><![CDATA[
+Given I am on Ebay 'Home' page..............................................passed
+When I search for "IPhone 14"...............................................passed
+Then I confirm at least 1000 results........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced search page features" name="Advanced search" time="8.489">
+<system-out><![CDATA[
+Given I am on Ebay 'Advanced search' page...................................passed
+When I do advanced search...................................................passed
+Then I confirm at least 1000 results........................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Ebay Home page scenarios" name="Advanced search link" time="10.408">
+<system-out><![CDATA[
+Given I am on Ebay 'Home' page..............................................passed
+When I click on 'Advanced' Link.............................................passed
+Then I naviagate to the 'Advanced search' page..............................passed
+]]></system-out>
+</testcase>
+</testsuite>

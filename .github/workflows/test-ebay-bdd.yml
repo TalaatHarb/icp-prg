@@ -1,0 +1,40 @@
+name: test-ebay-bdd
+
+on:
+  push:
+    branches:
+    - '**'
+    paths:
+      - ebay-bdd/**
+      - .github/workflows/test-ebay-bdd.yml
+
+jobs:
+  test:
+    name: test-ebay-bdd
+    runs-on: ubuntu-latest
+    
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        options: --shm-size=2gb
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+    - name: Install Google Chrome 
+      run: chmod +x ./ebay-bdd/scripts/InstallChrome.sh && ./ebay-bdd/scripts/InstallChrome.sh
+    # - name: Install Edge
+    #   run: chmod +x ./ebay-bdd/scripts/InstallEdge.sh && ./ebay-bdd/scripts/InstallEdge.sh      
+    # - name: Install Firefox 
+    #   run: chmod +x ./ebay-bdd/scripts/InstallFirefox.sh && ./ebay-bdd/scripts/InstallFirefox.sh 
+    - name: Test with Maven in Chrome
+      run: cd ebay-bdd && mvn -B test verify -Dbrowser=chrome -DnvdApiKey=${{ secrets.NVD_API_KEY }} --file pom.xml 
+    #- name: Test with Maven in Edge
+    #  run: mvn -B test verify -Dbrowser=edge  -DnvdApiKey=${{ secrets.NVD_API_KEY }} --file pom.xml
+    #- name: Test with Maven in Firefox
+    #  run: mvn -B test verify -Dbrowser=firefox -DnvdApiKey=${{ secrets.NVD_API_KEY }} --file pom.xml 
