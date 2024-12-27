@@ -8,4 +8,5 @@ public class City {
 	private String name;
 	private String district;
 	private Integer cityType;
+	private String parentCity;
 }

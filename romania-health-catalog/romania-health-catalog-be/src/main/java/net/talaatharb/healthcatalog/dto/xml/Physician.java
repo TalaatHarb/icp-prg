@@ -9,4 +9,5 @@ public class Physician {
 	private String name;
 	private String stencil;
 	private Date validFrom;
+	private Date validTo;
 }

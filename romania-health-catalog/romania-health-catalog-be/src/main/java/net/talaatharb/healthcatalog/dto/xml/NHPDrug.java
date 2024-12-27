@@ -11,5 +11,6 @@ public class NHPDrug {
 	private Date validFrom;
 	private Date validTo;
 	private String nhp;
-	private Integer price;
+	private Double price;
+	private Double vat;
 }

@@ -16,13 +16,14 @@ public class CopaymentListDrug {
 	private Double wholeSalePrice;
 	private Double referencePrice;
 	private Boolean specialLaw;
-	private Integer needApproval;
-	private Integer contractCv;
+	private String needApproval;
+	private String contractCv;
 	private Integer overValue;
 	private Integer needSpecialty;
 	private String classifInsulin;
 	private String hgDci;
 	private String hgAtc;
+	private String hgIcd10;
 	private Integer openCircuit;
 	private Date validFrom;
 	private Date validTo;
