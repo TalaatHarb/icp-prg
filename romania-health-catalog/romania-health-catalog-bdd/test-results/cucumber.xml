@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="3.692" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Romania Home page scenarios" name="Available versions" time="3.505">
+<testsuite name="Cucumber" time="11.373" tests="3" skipped="0" failures="0" errors="0">
+<testcase classname="Romania Home page scenarios" name="Available versions" time="3.419">
 <system-out><![CDATA[
 Given I am on Catalog 'Home' page...........................................passed
 When Looking into the list of available versions............................passed
 Then I find the list of available versions..................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Romania Home page scenarios" name="Import new version" time="4.329">
+<system-out><![CDATA[
+Given I am on Catalog 'Home' page...........................................passed
+When I import new catalog with issue date '2024 - 3'........................passed
+Then I confirm '2024 - 3' gets added to the top of the list of available catalogs.passed
+]]></system-out>
+</testcase>
+<testcase classname="Romania Home page scenarios" name="Search for a drug" time="3.401">
+<system-out><![CDATA[
+Given I am on Catalog 'Home' page...........................................passed
+When I search for 'NUTRIFLEX'...............................................passed
+Then I confirm at least 1 result............................................passed
+And I can open drug search result...........................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

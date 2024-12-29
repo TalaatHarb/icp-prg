@@ -10,5 +10,6 @@ public class Constants {
 	public static final String URL_PROPERTY = "site.url";
 	public static final String MAIN_URL = System.getProperty(URL_PROPERTY, DEFAULT_URL);
 	public static final String HOME_PAGE_URL = MAIN_URL + "/";
+	public static final String SAMPLE_FILE = "./files/Sample.zip";
 
 }

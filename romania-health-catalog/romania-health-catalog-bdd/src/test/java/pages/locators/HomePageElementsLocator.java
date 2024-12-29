@@ -18,8 +18,29 @@ public class HomePageElementsLocator {
 	@FindBy(xpath = "//*[@id=\"toggle-dropdown\"]")
 	public WebElement versionsMenu;
 
-	@FindBy(xpath = "//*[@id=\"versions-menu\"]/button")
+	@FindBy(css = ".version")
 	public List<WebElement> versions;
+	
+	@FindBy(xpath = "//*[@id=\"import-button\"]")
+	public WebElement importButton;
+	
+	@FindBy(xpath = "//*[@id=\"dismiss-modal\"]")
+	public WebElement closeModalButton;
+	
+	@FindBy(xpath = "//*[@id=\"file-upload\"]")
+	public WebElement fileUploadInput;
+	
+	@FindBy(xpath = "//*[@id=\"loadding\"]")
+	public WebElement loadingIndicator;
+	
+	@FindBy(xpath = "//*[@id=\"importFileModal\"]")
+	public WebElement modal;
+	
+	@FindBy(xpath = "//*[@id=\"drug\"]")
+	public WebElement drugView;
+	
+	@FindBy(css = ".search-result")
+	public List<WebElement> searchResults;
 
 	public HomePageElementsLocator(WebDriver webDriver) {
 		PageFactory.initElements(webDriver, this);
