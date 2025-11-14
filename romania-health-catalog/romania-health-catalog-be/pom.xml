@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
+		<version>3.5.7</version>
 		<relativePath />
 	</parent>
 	<properties>
@@ -32,8 +32,8 @@
 		<!-- Testing -->
 		<junit.version>5.11.3</junit.version>
 		<minimum-coverage-ratio>0.6</minimum-coverage-ratio>
-		<pitest.version>1.17.2</pitest.version>
-		<pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
+		<pitest.version>1.21.1</pitest.version>
+		<pitest-junit5-plugin.version>1.2.3</pitest-junit5-plugin.version>
 		<mockito.version>5.14.2</mockito.version>
 		<!-- Maven plugins -->
 		<maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
@@ -49,6 +49,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate6</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -184,6 +192,19 @@
 					<mutators>
 						<mutator>DEFAULTS</mutator>
 					</mutators>
+					<!-- Use separate JVM to avoid conflicts with antivirus agents -->
+					<useClasspathJar>true</useClasspathJar>
+					<!-- Additional JVM arguments to prevent agent conflicts -->
+					<jvmArgs>
+						<jvmArg>-XX:+EnableDynamicAgentLoading</jvmArg>
+						<jvmArg>-Xmx1024m</jvmArg>
+					</jvmArgs>
+					<!-- Export coverage data to avoid minion issues -->
+					<exportLineCoverage>true</exportLineCoverage>
+					<outputFormats>
+						<outputFormat>HTML</outputFormat>
+						<outputFormat>XML</outputFormat>
+					</outputFormats>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -213,6 +234,8 @@
 					<failBuildOnCVSS>10</failBuildOnCVSS>
 					<assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
 					<failOnError>true</failOnError>
+					<ossIndexAnalyzerEnabled>true</ossIndexAnalyzerEnabled>
+					<ossIndexRequestDelay>2000</ossIndexRequestDelay>
 				</configuration>
 				<executions>
 					<execution>

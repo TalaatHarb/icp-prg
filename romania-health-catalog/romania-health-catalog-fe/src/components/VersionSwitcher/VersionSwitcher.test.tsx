@@ -18,13 +18,13 @@ test('VersionSwitcher renders with no versions', () => {
 
 test('VersionSwitcher renders with one version already selected', () => {
     const versionSwitcher = render(<VersionSwitcher versions={[{ version: new Date(2023, 7), id: "1" }]} />);
-    expect(versionSwitcher.getByText(/version: 2023 - 7/i)).toBeDefined();
+    expect(versionSwitcher.getByText(/version: 2023 - 8/i)).toBeDefined();
 });
 
 test('VersionSwitcher renders with latest version already selected', () => {
     const versionSwitcher = render(<VersionSwitcher versions={[{ version: new Date(2024, 11), id: "2" }, { version: new Date(2023, 7), id: "1" }]} />);
-    expect(versionSwitcher.getByText(/version: 2024 - 11/i)).toBeDefined();
-    expect(versionSwitcher.queryByText(/version: 2023 - 7/i)).toBeNull();
+    expect(versionSwitcher.getByText(/version: 2024 - 12/i)).toBeDefined();
+    expect(versionSwitcher.queryByText(/version: 2023 - 8/i)).toBeNull();
 });
 
 test('VersionSwitcher renders new version when switching', () => {
@@ -33,14 +33,14 @@ test('VersionSwitcher renders new version when switching', () => {
     const versionSwitcher = render(<VersionSwitcher versions={versions} versionChanged={versionChangedFunction} />);
 
     // confirm intial state
-    expect(versionSwitcher.getByText(/version: 2024 - 11/i)).toBeDefined();
-    expect(versionSwitcher.queryByText(/version: 2023 - 7/i)).toBeNull();
+    expect(versionSwitcher.getByText(/version: 2024 - 12/i)).toBeDefined();
+    expect(versionSwitcher.queryByText(/version: 2023 - 8/i)).toBeNull();
 
     const allButtons = versionSwitcher.getAllByRole("button");
     expect(allButtons.length).toBe(3);
 
     const dropDownToggle = allButtons.filter(b => b.className.includes("dropdown-toggle"))[0];
-    const secondVersionButton = allButtons.filter(b => b.textContent?.includes("2023 - 7"))[0];
+    const secondVersionButton = allButtons.filter(b => b.textContent?.includes("2023 - 8"))[0];
 
     // Switch version
     act(() => {
@@ -52,6 +52,6 @@ test('VersionSwitcher renders new version when switching', () => {
     expect(versionChangedFunction).toHaveBeenCalledWith(versions[1]);
 
     // View changed to reflect changes
-    expect(versionSwitcher.getByText(/version: 2023 - 7/i)).toBeDefined();
-    expect(versionSwitcher.queryByText(/version: 2024 - 11/i)).toBeNull();
+    expect(versionSwitcher.getByText(/version: 2023 - 8/i)).toBeDefined();
+    expect(versionSwitcher.queryByText(/version: 2024 - 12/i)).toBeNull();
 });

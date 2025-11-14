@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="11.373" tests="3" skipped="0" failures="0" errors="0">
-<testcase classname="Romania Home page scenarios" name="Available versions" time="3.419">
+<testsuite name="Cucumber" time="35.177" tests="3" skipped="0" failures="1" errors="0">
+<testcase classname="Romania Home page scenarios" name="Search for a drug" time="34.955">
+<failure type="org.opentest4j.AssertionFailedError" message="Not enough search results ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;">
+<![CDATA[org.opentest4j.AssertionFailedError: Not enough search results ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)
+	at steps.HomeSteps.iConfirmAtLeastResult(HomeSteps.java:48)
+	at ✽.I confirm at least 1 result(file:///D:/workspace/icp-prg/romania-health-catalog/romania-health-catalog-bdd/src/test/resources/features/CatalogHome.feature:20)
+]]>
+</failure>
 <system-out><![CDATA[
 Given I am on Catalog 'Home' page...........................................passed
-When Looking into the list of available versions............................passed
-Then I find the list of available versions..................................passed
+When I search for 'NUTRIFLEX'...............................................passed
+Then I confirm at least 1 result............................................failed
+And I can open drug search result...........................................skipped
 ]]></system-out>
 </testcase>
-<testcase classname="Romania Home page scenarios" name="Import new version" time="4.329">
+<testcase classname="Romania Home page scenarios" name="Import new version" time="34.894">
 <system-out><![CDATA[
 Given I am on Catalog 'Home' page...........................................passed
 When I import new catalog with issue date '2024 - 3'........................passed
 Then I confirm '2024 - 3' gets added to the top of the list of available catalogs.passed
 ]]></system-out>
 </testcase>
-<testcase classname="Romania Home page scenarios" name="Search for a drug" time="3.401">
+<testcase classname="Romania Home page scenarios" name="Available versions" time="4.163">
 <system-out><![CDATA[
 Given I am on Catalog 'Home' page...........................................passed
-When I search for 'NUTRIFLEX'...............................................passed
-Then I confirm at least 1 result............................................passed
-And I can open drug search result...........................................passed
+When Looking into the list of available versions............................passed
+Then I find the list of available versions..................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

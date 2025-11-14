@@ -23,7 +23,7 @@ class HealthCatalogVersionServiceImplTest {
 	void testGetAllAvailableVersions() {
 		healthCatalogVersionService.getAllAvailableVersions();
 		
-		verify(healthCatalogVersionRepository).findAll();
+		verify(healthCatalogVersionRepository).findAllByOrderByIssueDateDesc();
 	}
 
 }

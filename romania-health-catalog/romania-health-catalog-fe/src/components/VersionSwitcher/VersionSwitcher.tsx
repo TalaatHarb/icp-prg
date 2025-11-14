@@ -2,7 +2,7 @@ import { Version } from "@/models/Version";
 import { useEffect, useState } from "react";
 
 function versionToString(v: Date): string {
-    return v.getFullYear() + " - " + v.getMonth();
+    return v.getFullYear() + " - " + (v.getMonth()+1);
 }
 
 interface VersionSwitcherProps {
@@ -21,21 +21,23 @@ const VersionSwitcher = ({ versions = [], versionChanged = (_) => { } }: Readonl
     const [version, setVersion] = useState<Date | null>();
 
     useEffect(() => {
-        let selectedVersion: Date | null;
+        let selectedVersion: Version | null;
 
         if (versions.length >= 1) {
-            selectedVersion = versions[0].version;
+            selectedVersion = versions[0];
+            setVersion(selectedVersion?.version);
+            versionChanged(selectedVersion);
         } else {
             selectedVersion = null;
+            setVersion(null);
         }
 
-        setVersion(selectedVersion);
-    }, versions);
+    }, [versions]);
 
     return (
 
         <div className="btn-group">
-            <div className={`text-capitalize btn btn-secondary btn-lg"`}>
+            <div className="text-capitalize btn btn-secondary">
                 {version ? "Version: " + versionToString(version) : "Choose Version"}
             </div>
             <button
@@ -51,7 +53,7 @@ const VersionSwitcher = ({ versions = [], versionChanged = (_) => { } }: Readonl
                 {versions.length >= 1 ?
                     versions.map(v => {
                         return (
-                            <button id={v.id} key={v.id} className="dropdown-item" onClick={() => {
+                            <button id={v.id} key={v.id} className="dropdown-item version" onClick={() => {
                                 versionChanged(v);
                                 setVersion(v.version);
                             }}>

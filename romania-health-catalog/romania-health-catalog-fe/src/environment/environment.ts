@@ -12,6 +12,6 @@ const API_URL = window._env_.API_URL ? window._env_.API_URL : 'http://localhost:
 
 export const environment = {
     apiUrl: API_URL,
-    defaultPageSize: 10,
+    defaultPageSize: 7,
     defaultSort: 'updateDate,desc',
 };

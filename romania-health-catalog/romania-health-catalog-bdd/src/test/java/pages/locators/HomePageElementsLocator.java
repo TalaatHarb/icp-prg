@@ -24,13 +24,16 @@ public class HomePageElementsLocator {
 	@FindBy(xpath = "//*[@id=\"import-button\"]")
 	public WebElement importButton;
 	
+	@FindBy(xpath = "//*[@id=\"upload-button\"]")
+    public WebElement uploadButton;
+	
 	@FindBy(xpath = "//*[@id=\"dismiss-modal\"]")
 	public WebElement closeModalButton;
 	
 	@FindBy(xpath = "//*[@id=\"file-upload\"]")
 	public WebElement fileUploadInput;
 	
-	@FindBy(xpath = "//*[@id=\"loadding\"]")
+	@FindBy(xpath = "//*[@id=\"loading\"]")
 	public WebElement loadingIndicator;
 	
 	@FindBy(xpath = "//*[@id=\"importFileModal\"]")

@@ -52,6 +52,8 @@ public class HomePageActions {
 		homePageElements.importButton.click();
 		
 		homePageElements.fileUploadInput.sendKeys(absolutePath);
+		PageUtils.waitUntilClickable(webDriver, homePageElements.uploadButton);
+		homePageElements.uploadButton.click();
         PageUtils.waitUntilElementVanish(webDriver, homePageElements.loadingIndicator);
 		
         PageUtils.waitUntilClickable(webDriver, homePageElements.closeModalButton);
